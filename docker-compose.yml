@@ -1,0 +1,98 @@
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: ./docker/nginx/DockerFile
+    container_name: community_nginx
+    # secrets:
+    #   - mypassphrase
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "81:81"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - php
+    networks:
+      - community
+
+  php:
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+      args:
+        - PHP_IMAGE_VER=php:8.2.12-fpm-bullseye
+    container_name: php_laravel_vue
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "9000:9000"
+      - "6001:6001" # ws port
+    depends_on:
+      - redis
+      - mysql
+    networks:
+      - community
+  
+  mysql:
+    image: mysql:8.0.21
+    container_name: community_mysql
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    environment: 
+      MYSQL_DATABASE: worshippers
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: root
+      MYSQL_USER: root
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes: 
+      - mysql_volume:/var/lib/mysql
+      - mysql_volume:/etc/mysql/conf.d/mysql-custom.cnf
+    networks:
+      - community
+
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    container_name: community_PMA
+    depends_on:
+      - mysql
+    ports:
+      - "8081:80"
+    environment:
+      - PMA_HOST=mysql
+    networks:
+      - community
+
+  node:
+    image: node:14.9
+    container_name: node
+    volumes:
+      - .:/var/www/html
+    working_dir: /var/www/html
+    entrypoint: ['npm']
+    networks:
+      - community
+
+  redis:
+    image: redis:5.0.5
+    ports:
+      - "6379:6379"
+    container_name: community_redis
+    volumes:
+      - redis_volume:/data
+    networks:
+      - community
+
+networks:
+  community:
+
+volumes:
+  mysql_volume:
+  redis_volume:
