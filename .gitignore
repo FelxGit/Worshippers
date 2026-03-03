@@ -1,12 +1,6 @@
 /node_modules
-/public/hot
-/public/storage
-/public/assets
-/public
-/storage/*.key
 /vendor
 .env
-.env.example
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml

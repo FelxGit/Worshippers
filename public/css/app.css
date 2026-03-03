@@ -1,0 +1,295 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: rgb(24, 25, 26);
+  font-size: 14px;
+  color: rgb(255, 255, 255);
+  font-size: 16px;
+  overflow-x: hidden;
+}
+body h3 {
+  font-size: 28px;
+}
+
+#app {
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+.loaderCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.errors {
+  color: rgb(244, 67, 54);
+}
+
+.horizontal-line {
+  width: 100%;
+  text-align: center;
+  border-bottom: 2px solid rgb(168, 165, 172);
+  line-height: 0em;
+  margin: 10px 0 20px;
+}
+
+.horizontal-line-text {
+  background: rgb(36, 37, 38);
+  padding: 0 100px;
+}
+
+.checkbox-footer {
+  height: 27px;
+  transform: scale(1.5);
+}
+
+.tab-content .tab-pane {
+  display: grid;
+}
+
+[multiple], [type=date], [type=datetime-local], [type=email], [type=month], [type=number], [type=password], [type=search], [type=tel], [type=text], [type=time], [type=url], [type=week], select, textarea {
+  --tw-shadow: 0 0 #0000;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: rgb(58, 59, 60) !important;
+  border-radius: 0.5rem !important;
+  border-width: 1px !important;
+  border-color: rgb(58, 59, 60) !important;
+  font-size: 0.8rem !important;
+  line-height: 1.5rem !important;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 15px;
+  height: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-corner,
+::-webkit-scrollbar-track {
+  background-color: rgb(36, 37, 38);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: rgb(165, 168, 172);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(165, 168, 172, 0.7);
+}
+
+/* Handle on active*/
+::-webkit-scrollbar-thumb:active {
+  background-color: rgba(165, 168, 172, 0.7);
+}
+
+/* Buttons */
+::-webkit-scrollbar-button:single-button {
+  background-color: rgb(36, 37, 38);
+  display: block;
+  background-size: 10px;
+  background-repeat: no-repeat;
+}
+
+/* Up */
+::-webkit-scrollbar-button:single-button:vertical:decrement {
+  height: 16px;
+  width: 16px;
+  background-position: center 5px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='rgb(165, 168, 172)'><polygon points='50,00 0,50 100,50'/></svg>");
+}
+
+::-webkit-scrollbar-button:single-button:vertical:decrement:hover {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='rgb(165, 168, 172, 0.7)'><polygon points='50,00 0,50 100,50'/></svg>");
+}
+
+::-webkit-scrollbar-button:single-button:vertical:decrement:active {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='rgb(165, 168, 172, 0.7)'><polygon points='50,00 0,50 100,50'/></svg>");
+}
+
+/* Down */
+::-webkit-scrollbar-button:single-button:vertical:increment {
+  height: 16px;
+  width: 16px;
+  background-position: center bottom;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='rgb(165, 168, 172)'><polygon points='0,0 100,0 50,50'/></svg>");
+}
+
+::-webkit-scrollbar-button:single-button:vertical:increment:hover {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='rgb(165, 168, 172, 0.7)'><polygon points='0,0 100,0 50,50'/></svg>");
+}
+
+::-webkit-scrollbar-button:single-button:vertical:increment:active {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='rgb(165, 168, 172, 0.7)'><polygon points='0,0 100,0 50,50'/></svg>");
+}
+
+/* Left */
+::-webkit-scrollbar-button:single-button:horizontal:decrement {
+  height: 16px;
+  width: 16px;
+  background-position: 3px 3px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='rgb(165, 168, 172)'><polygon points='0,50 50,100 50,0'/></svg>");
+}
+
+::-webkit-scrollbar-button:single-button:horizontal:decrement:hover {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='rgb(165, 168, 172, 0.7)'><polygon points='0,50 50,100 50,0'/></svg>");
+}
+
+::-webkit-scrollbar-button:single-button:horizontal:decrement:active {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='rgb(165, 168, 172, 0.7)'><polygon points='0,50 50,100 50,0'/></svg>");
+}
+
+/* Right */
+::-webkit-scrollbar-button:single-button:horizontal:increment {
+  height: 16px;
+  width: 16px;
+  background-position: 3px 3px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='rgb(165, 168, 172)'><polygon points='0,0 0,100 50,50'/></svg>");
+}
+
+::-webkit-scrollbar-button:single-button:horizontal:increment:hover {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='rgb(165, 168, 172, 0.7)'><polygon points='0,0 0,100 50,50'/></svg>");
+}
+
+::-webkit-scrollbar-button:single-button:horizontal:increment:active {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='rgb(165, 168, 172, 0.7)0'><polygon points='0,0 0,100 50,50'/></svg>");
+}
+
+.ck .ck-toolbar__items {
+  font-size: 10px !important;
+}
+
+.ck-editor__editable {
+  color: black;
+  word-break: break-all;
+}
+
+.ck.ck-toolbar.ck-toolbar_grouping > .ck-toolbar__items {
+  flex-wrap: wrap !important;
+}
+
+.multiselect {
+  width: 200px;
+  min-height: unset;
+  background-color: white;
+  border-radius: 10px;
+}
+.multiselect .multiselect__select {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  height: 3.5rem;
+}
+.multiselect .multiselect__tags {
+  background: transparent;
+  width: 100%;
+  min-width: unset;
+  display: flex;
+  align-items: center;
+  height: 3.5rem;
+  min-height: unset;
+  padding-top: 0;
+  justify-content: flex-start;
+  padding-left: 12px;
+}
+.multiselect .multiselect__tags .multiselect__single,
+.multiselect .multiselect__tags .multiselect__placeholder,
+.multiselect .multiselect__tags .multiselect__input {
+  background: transparent;
+  margin: 0;
+  padding: 0;
+  background-color: white !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.multiselect__option--highlight {
+  background-color: rgb(36, 37, 38) !important;
+}
+
+.multiselect__option--highlight:after {
+  background-color: rgb(58, 59, 60) !important;
+}
+
+.multiselect__loading-enter {
+  color: rgb(58, 59, 60) !important;
+}
+
+.multiselect__spinner {
+  height: 95% !important;
+}
+.multiselect__spinner:before {
+  border-top-color: rgb(58, 59, 60) !important;
+}
+.multiselect__spinner:after {
+  border-top-color: rgb(58, 59, 60) !important;
+}
+
+.multiselect__tags-wrap {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+}
+
+.multiselect__tag {
+  min-width: 70px !important;
+}
+
+.multiselect__strong {
+  line-height: 1 !important;
+  width: 100px !important;
+  font-size: 10px !important;
+  margin-right: 8px;
+}
+
+.ellipsis {
+  text-overflow: ellipsis; /* enables ellipsis */
+  white-space: nowrap; /* keeps the text in a single line */
+  overflow: hidden; /* keeps the element from overflowing its parent */
+}
+
+i.fa {
+  -webkit-animation: show 1s 1;
+  /* any other properties to override from FontAwesome's default .fa rule */
+}
+.trumbowyg-editor-box {
+  resize: vertical;
+  overflow: hidden;
+}
+
+.post-window {
+  display: grid;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-radius: 0;
+  border-bottom: thin solid white;
+  cursor: pointer;
+}
+
+.comment-input {
+  width: 100%;
+  height: 200px;
+  padding: 1.5rem;
+  background-color: white !important;
+  color: black;
+  font-size: 16px !important;
+  border: none;
+}
+
+.post-window-head {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.post-window-setting {
+  transform: rotate(90deg);
+}
