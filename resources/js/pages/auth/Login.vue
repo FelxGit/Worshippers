@@ -158,7 +158,7 @@ export default {
       let topPosition = (screenHeight - windowHeight) / 2;
 
       // Open the window with the calculated positions
-      let win = window.open(this.appConfig.SERVER_URL + '/api/auth/google', "SignIn", "width=780,height=410,toolbar=0,scrollbars=0,status=0,resizable=0,location=0,menuBar=0,top=" + topPosition + ",left=" + leftPosition);
+      let win = window.open('/api/auth/google', "SignIn", "width=780,height=410,toolbar=0,scrollbars=0,status=0,resizable=0,location=0,menuBar=0,top=" + topPosition + ",left=" + leftPosition);
       var timer = setInterval(function() {
           if(win.closed) {
               clearInterval(timer);
