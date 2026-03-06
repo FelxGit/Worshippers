@@ -42,6 +42,7 @@ Route::group(['namespace' => 'Api' ], function () {
 
 Route::group(['middleware' => 'auth:api', 'namespace' => 'Api'], function () {
     Route::get('users/{user}', 'UserController@show');
+    Route::delete('users/{id}', 'UserController@delete');
     Route::post('posts', 'PostController@store');
     Route::get('posts/{id}', 'PostController@show');
     Route::post('posts/upload', 'PostController@upload');

@@ -6,7 +6,7 @@
             <div class="overflow-y-auto rounded">
                 <ul class="space-y-2">
                     <li v-for="(menu, index) in sidebar" :key="index">
-                        <router-link :to="{ name: menu.name }" class="flex items-center p-2 text-base font-normal rounded-lg text-white hover:bg-bt-secondary">
+                        <router-link :to="{ name: menu.name }" :class="menu.class">
                         <i :class="`${menu.icon}`" aria-hidden="true"></i>
                         <span class="ml-3">{{ lang.get(`words.${_.startCase(_.get(menu, 'name')).replaceAll(' ', '')}`) }}</span>
                         </router-link>

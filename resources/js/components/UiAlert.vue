@@ -132,7 +132,7 @@ $ui-alert-margin-bottom     : rem(16px) !default;
     position: fixed;
     right: 15px;
     left: 15px;
-    bottom: 0px;
+    bottom: 50px;
     transition: margin-bottom 0.3s;
     opacity: 0.7;
     &.has-no-transition {

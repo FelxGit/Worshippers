@@ -19,13 +19,13 @@
                     <div class="the-nav">
                         <ul id="menu-company" class="">
                             <li class="nav-item menu-item-home">
-                                <router-link :to="{ name: 'landing-page'}"><span>Home</span></router-link>
+                                <router-link :to="{ name: 'home'}"><span>Home</span></router-link>
                             </li>
                             <li class="nav-item">
                                 <router-link :to="{ name: 'about' }"><span>About</span></router-link>
                             </li>
                             <li class="nav-item">
-                                <router-link :to="{ name: 'contact' }"><span>Contact</span></router-link>
+                                <router-link :to="{ name: 'PrivacyPolicy' }"><span>Privacy</span></router-link>
                             </li>
                         </ul>
                     </div>

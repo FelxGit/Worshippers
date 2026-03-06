@@ -15,7 +15,7 @@ class CreatePostLikesTable extends Migration
     {
         Schema::create('post_likes', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
+            $table->integer('user_id')->constrained()->onDelete('cascade');
             $table->integer('post_id');
             $table->timestamps();
             $table->softDeletes();

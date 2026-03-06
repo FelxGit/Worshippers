@@ -114,6 +114,7 @@ return [
     'Replies' => 'Replies',
     'RoleId' => 'Role ID',
     'Revert' => 'Revert',
+    'RemoveAccount' => 'Remove Account',
 
     // S
     'SignIn' => 'Sign In',

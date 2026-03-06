@@ -98,4 +98,21 @@ class UserController extends Controller
         $rtn = $this->service->reset();
         return response()->json($rtn, 200);
     }
+
+    /**
+     * Reset the user password.
+     *
+     * @param $id
+     *
+     * @return JSON $rtn
+     */
+    public function delete($id)
+    {
+        $user = User::find($id);
+        if ($user) {
+            $user->forceDelete();
+        }
+
+        return response()->json(['success' => true]);
+    }
 }
