@@ -22,7 +22,11 @@ export default {
     removeAccount() {
         this.$http.delete('api/users/' + this.user.id)
         .then((response) => {
-          console.log(response)
+          localStorage['community.jwt'] = null
+          localStorage['community.user'] = null
+          mutations.setUser(null)
+          mutations.setIsLoggedIn(false)
+
           let alertData = {
             showAlert: true,
             type: "success",
