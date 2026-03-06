@@ -34,6 +34,7 @@ export default {
               "The system has successfully removed your account data.",
           };
           mutations.setAlert(alertData);
+          this.$router.push("/");
         })
     }
   }
