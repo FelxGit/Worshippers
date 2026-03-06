@@ -4,7 +4,7 @@ const appConfig = {
 }
 
 if(appConfig.development_mode) {
-    appConfig.SERVER_URL = process.env.APP_URL
+    appConfig.SERVER_URL = 'http://100.28.198.15'
     // appConfig.SERVER_URL = 'http://laravel-vue.test'
 }
 

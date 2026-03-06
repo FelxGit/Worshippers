@@ -4,7 +4,6 @@
       leave-class="transform opacity-100 scale-100"
       id="postFormComponent">
     <div class="relative">
-      <loading v-show="isLoadingCreatePost" :type="loader.type[0]" :withLoading="true"></loading>
       <div class="r-field-required grid gap-y-5">
         <div>
           <label class="grid gap-y-2">
@@ -75,7 +74,7 @@
           </div>
         </div>
       </div>
-      <ui-button @click.prevent="submit" :type="'create'" :size="'full'" :withLoading="loading" :disabled="anyError" class="text-white mt-2">
+      <ui-button @click.prevent="submit" :type="'create'" :size="'full'" :withLoading="withLoading" :disabled="anyError" class="text-white mt-2">
         <span class="font-bold">{{ lang.get('words.Submit') }}</span>
       </ui-button>
     </div>
@@ -105,8 +104,8 @@ export default {
       tag_opt: [],
       errors: {},
       isDirty: false,
-      isLoadingCreatePost: false,
-      isLoadingTags: false
+      isLoadingTags: false,
+      withLoading: false
     };
   },
   validations: {
@@ -141,7 +140,7 @@ export default {
         btns: this.trumbowyg.default.btns,
         plugins: {
             upload: {
-                serverPath: this.appConfig.SERVER_URL + '/api/posts/upload',
+                serverPath: '/api/posts/upload',
                 fileFieldName: this.trumbowyg.upload_type.image,
                 data: [ this.trumbowyg.uploadDataToken() ],
                 urlPropertyName: 'url',
@@ -217,7 +216,7 @@ export default {
           });
     },
     submit() {
-      this.isLoadingCreatePost = true;
+      this.withLoading = true;
       this.errors = null;
 
       this.$http.post('api/posts', this.formData)
@@ -246,6 +245,7 @@ export default {
        })
       .finally(() => {
         this.isLoadingCreatePost = false;
+        this.withLoading = false;
         //
       })
     },

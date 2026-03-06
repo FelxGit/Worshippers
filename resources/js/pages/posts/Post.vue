@@ -133,16 +133,16 @@ export default {
             this.$http.get(url)
             .then( (response) => {
                 if (_.has(response, "data.exception")) {
-                let alertData = {
-                    showAlert: true,
-                    type: "error",
-                    message:
-                    "Sorry our server has problem at the moment. Please come back later. Thank you.",
-                };
-                mutations.setAlert(alertData);
+                  let alertData = {
+                      showAlert: true,
+                      type: "error",
+                      message:
+                      "Sorry our server has problem at the moment. Please come back later. Thank you.",
+                  };
+                  mutations.setAlert(alertData);
                 } else {
                 // SUCCESS
-                  this.post = response.data
+                  this.post = response.data;
                 }
             })
             .catch(function (error) {

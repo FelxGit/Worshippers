@@ -79,7 +79,7 @@
           @click.prevent="submit"
           :type="'create'"
           :size="'full'"
-          :withLoading="loading"
+          :withLoading="withLoading"
           :disabled="$v.form.$anyError || !$v.form.$anyDirty || isInvalid"
           class="text-white"
         >
@@ -103,6 +103,7 @@ export default {
         password: "",
         remember: false,
       },
+      withLoading: false,
       errors: {},
     };
   },
@@ -206,14 +207,13 @@ export default {
       // });
     },
     submit() {
-      console.log('submit')
-      // mutations.setLoading(true);
       this.errors = null;
+      this.withLoading = true;
       let formData = this.form;
 
       this.$http
         .post("api/login", formData)
-        .then((response) => {
+        .then((response) => { 
           if (_.has(response, "data.errors")) {
             this.errors = response.data.errors;
           } else if (_.has(response, "data.exception")) {
@@ -250,7 +250,7 @@ export default {
           console.log(error);
         })
         .finally(() => {
-          mutations.setLoading(false);
+          this.withLoading = false;
         });
     },
     setLogin() {

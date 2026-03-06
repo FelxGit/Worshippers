@@ -2088,8 +2088,8 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
       tag_opt: [],
       errors: {},
       isDirty: false,
-      isLoadingCreatePost: false,
-      isLoadingTags: false
+      isLoadingTags: false,
+      withLoading: false
     };
   },
   validations: {
@@ -2125,7 +2125,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
       btns: this.trumbowyg["default"].btns,
       plugins: {
         upload: {
-          serverPath: this.appConfig.SERVER_URL + '/api/posts/upload',
+          serverPath: '/api/posts/upload',
           fileFieldName: this.trumbowyg.upload_type.image,
           data: [this.trumbowyg.uploadDataToken()],
           urlPropertyName: 'url',
@@ -2203,7 +2203,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
     },
     submit: function submit() {
       var _this3 = this;
-      this.isLoadingCreatePost = true;
+      this.withLoading = true;
       this.errors = null;
       this.$http.post('api/posts', this.formData).then(function (response) {
         if (_.has(response, "data.errors")) {
@@ -2227,6 +2227,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
         }
       })["finally"](function () {
         _this3.isLoadingCreatePost = false;
+        _this3.withLoading = false;
         //
       });
     },
@@ -2816,6 +2817,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
         password: "",
         remember: false
       },
+      withLoading: false,
       errors: {}
     };
   },
@@ -2916,9 +2918,8 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
     },
     submit: function submit() {
       var _this = this;
-      console.log('submit');
-      // mutations.setLoading(true);
       this.errors = null;
+      this.withLoading = true;
       var formData = this.form;
       this.$http.post("api/login", formData).then(function (response) {
         if (_.has(response, "data.errors")) {
@@ -2946,7 +2947,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
       })["catch"](function (error) {
         console.log(error);
       })["finally"](function () {
-        _store__WEBPACK_IMPORTED_MODULE_0__.mutations.setLoading(false);
+        _this.withLoading = false;
       });
     },
     setLogin: function setLogin() {
@@ -5097,18 +5098,7 @@ var render = function render() {
     }
   }, [_c("div", {
     staticClass: "relative"
-  }, [_c("loading", {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: _vm.isLoadingCreatePost,
-      expression: "isLoadingCreatePost"
-    }],
-    attrs: {
-      type: _vm.loader.type[0],
-      withLoading: true
-    }
-  }), _vm._v(" "), _c("div", {
+  }, [_c("div", {
     staticClass: "r-field-required grid gap-y-5"
   }, [_c("div", [_c("label", {
     staticClass: "grid gap-y-2"
@@ -5302,7 +5292,7 @@ var render = function render() {
     attrs: {
       type: "create",
       size: "full",
-      withLoading: _vm.loading,
+      withLoading: _vm.withLoading,
       disabled: _vm.anyError
     },
     on: {
@@ -6391,7 +6381,7 @@ var render = function render() {
     attrs: {
       type: "create",
       size: "full",
-      withLoading: _vm.loading,
+      withLoading: _vm.withLoading,
       disabled: _vm.$v.form.$anyError || !_vm.$v.form.$anyDirty || _vm.isInvalid
     },
     on: {
@@ -94019,12 +94009,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* provided dependency */ var process = __webpack_require__(/*! process/browser.js */ "./node_modules/process/browser.js");
 var appConfig = {
   development_mode: true
 };
 if (appConfig.development_mode) {
-  appConfig.SERVER_URL = process.env.APP_URL;
+  appConfig.SERVER_URL = 'http://100.28.198.15';
   // appConfig.SERVER_URL = 'http://laravel-vue.test'
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (appConfig);
