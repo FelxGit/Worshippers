@@ -2,9 +2,9 @@
   <footer id="main-footer" :class="[ footerStyle ]">
 		<div class="sleeve">
 			<div class="footer-logo">
-				<a href="#">
-          <img class="h-12" src="../../../assets/community.png" />
-        </a>
+				<router-link :to="{ name: 'home' }">
+                    <img class="h-12" src="../../../assets/community.png" />
+                </router-link>
 				<p>
 					We’re organisational culture and identity specialists.
 					Our mission is to help companies articulate who they are,
@@ -72,6 +72,7 @@
 	</footer>
 </template>
 <script>
+import { RouterLink } from "vue-router";
 import { getters, mutations, actions } from "../../store";
 
 export default {

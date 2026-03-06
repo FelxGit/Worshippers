@@ -3,7 +3,7 @@
     class="top-nav bg-bt-secondary border-gray-200 px-6 sm:px-4 md:px-20 py-2.5 rounded dark:bg-gray-900 relative"
   >
     <div class="nav-container">
-      <router-link :to="{ name: 'landing-page' }" class="navbar-brand flex items-center">
+      <router-link :to="{ name: 'home' }" class="navbar-brand flex items-center">
         <img id="img-logo" class="h-12" src="../../../assets/community.png" />
         <img id="img-logo-mobile" class="h-12" src="../../../assets/communitylogo.png" />
         <!-- <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Community</span> -->
